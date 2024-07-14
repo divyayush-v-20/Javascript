@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <form>
+        <h2>
+            BMI Calculator
+        </h2>
+        <p>Height in cm : </p> <input type="text" id = "height">
+        <p>Weight in kg : </p> <input type="text" id = "weight">
+        <br>
+        <br>
+        <button id = "submit">Calculate BMI</button>
+        <br> <br>
+        <div id="result"></div>
+    </form>
+</body>
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit',(e) => {
+        e.preventDefault();
+
+        const height = Number(document.querySelector('#height').value);
+        const weight = Number(document.querySelector('#weight').value);
+        const result = document.querySelector('#result');
+
+        if((weight === '' || weight < 0 || isNaN(weight)) && (height==='' || height < 0 || isNaN(height))){
+            result.innerHTML = "Please enter valid height and weight";
+        }
+        else if(height==='' || height < 0 || isNaN(height)){
+            result.textContent = "Please give a valid height";
+        }
+        else if(weight === '' || weight < 0 || isNaN(weight)){
+            result.innerHTML = "Please enter a valid weight";
+        }
+        else{
+            const ans = weight/(height**2)*(10**4);
+            result.innerHTML = `BMI : ${ans.toFixed(2)}`;
+        }
+    });
+</script>
+</html>

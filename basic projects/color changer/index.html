@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+</head>
+<style>
+    .parent{
+        display:flex;
+        gap:20px;
+    }
+    .box{
+        height:100px;
+        width:100px;
+        border: 1px solid black;
+        cursor:pointer;
+        transition-duration: 0.3s;
+    }
+    .box:hover{
+        transform : scale(1.05);
+        transition-duration: 0.3s;
+    }
+</style>
+<body>
+    <header>
+        <h1>Project 1 : Color Changer</h1>
+        <p>Click the boxes below to see the effect!</p>
+    </header>
+    <div class="parent">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+<script>
+    const colors = ["grey","white","blue","yellow"];
+    const parent = document.querySelector('.parent');
+    for(let i=0;i<parent.children.length;i++){
+        parent.children[i].style.backgroundColor = colors[i];
+    }
+    const changeColor = (index) => {
+        document.body.style.backgroundColor = colors[index];
+    }
+    const box = document.querySelectorAll('.box');
+    const body = document.querySelector('body');
+
+    box.forEach((box,index) => {
+        box.addEventListener('click', () => {
+            changeColor(index);
+        });
+    });
+</script>
+</html>
