@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    <ul class="language">
+        <li>js</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(LangName){
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `${LangName}`;
+        document.querySelector('.language').appendChild(listItem);
+    }
+    // addLanguage("C++");
+    // addLanguage("Java");
+
+    function addLangOpt(LangName){
+        const ListItem = document.createElement('li');
+        ListItem.appendChild(document.createTextNode(LangName)); //more optimized method for large projects
+        document.querySelector('.language').appendChild(ListItem);
+    }
+    addLangOpt("c++");
+    addLangOpt("java");
+
+    //edit values in DOM
+
+    const editval = document.querySelector('li:nth-child(3)');
+    const newLi = document.createElement('li');
+
+    newLi.textContent = "rust";
+    
+    editval.replaceWith(newLi);
+
+    // const jsReplacement = document.createElement('li');
+    // jsReplacement.textContent = "javascript";
+
+    const js = document.querySelector('li:nth-child(1)');
+    
+    js.outerHTML = "<li>javascript</li>"
+
+    //remove
+
+    const lastLang = document.querySelector('li:last-child');
+    lastLang.remove();
+</script>
+</html>
